@@ -60,7 +60,7 @@
         <select-dupla (dupla) = "getDupla($event)"></select-dupla>
         <div [hidden]="model.name != dupla.text" class="alert alert-danger"> Escolha um funcionário diferente do avaliado! </div>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0">Agendar</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0 || model.name == dupla.text">Agendar</button>
       <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Novo Agendamento</button>
     </form>
   </div>
