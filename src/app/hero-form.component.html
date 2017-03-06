@@ -1,0 +1,100 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Agendamento de Avaliação</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Insira o nome do funcionário a ser avaliado.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="agendamento">Date</label>
+        <input type="Date" class="form-control" id="agendamento"
+               required
+               [(ngModel)]="agendamento" name="agendamento"
+               (change)="checkDate()">
+        <div [hidden]="valDate || agendamento.pristine"
+             class="alert alert-danger">
+          Data deve ser posterior à data atual.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="local">Local</label>
+        <select class="form-control" id="local"
+                required
+                [(ngModel)]="model.local" name="local"
+                #local="ngModel">
+          <option *ngFor="let loc of locais" [value]="loc">{{loc}}</option>
+        </select>
+        <div [hidden]="local.valid || local.pristine" class="alert alert-danger">
+          Escolha uma sala para a avaliação.
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="tipo">Tipo de avaliação</label>
+         <select class="form-control" id="tipo"
+                required
+                [(ngModel)]="model.tipo" name="tipo"
+                #tipo="ngModel">
+          <option *ngFor="let tip of tipos" [value]="tip">{{tip}}</option>
+        </select>
+        <div [hidden]="tipo.valid || tipo.pristine"
+        class="alert alert-danger">
+          Escolha o tipo da avaliação.
+        </div>
+      </div>
+      
+      <select-multiple (list) = "getList($event)"></select-multiple>
+
+      <div>
+        <select-dupla (dupla) = "getDupla($event)"></select-dupla>
+        <div [hidden]="model.name != dupla.text" class="alert alert-danger"> Escolha um funcionário diferente do avaliado! </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0">Agendar</button>
+      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Novo Agendamento</button>
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h2>Deseja agendar esta avaliação?</h2>
+    <div class="row">
+      <div class="col-xs-3">Nome</div>
+      <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">local</div>
+      <div class="col-xs-9 pull-left">{{ model.local }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Data de avaliação</div>
+      <div class="col-xs-9 pull-left">{{ model.data | date: "dd/MM/yyyy"}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Tipo de avaliação</div>
+      <div class="col-xs-9 pull-left">{{ model.tipo }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Dupla avaliadora</div>
+      <div class="col-xs-9 pull-left">{{ dupla.text }}</div>
+    </div>
+
+
+    <br>
+    <div class="row">
+      <div class="col-xs-9">Gestores avaliadores</div>
+      <li *ngFor="let gestor of gestores" class="col-xs-9 pull-left">{{gestor.text}}</li>
+    </div>
+
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>

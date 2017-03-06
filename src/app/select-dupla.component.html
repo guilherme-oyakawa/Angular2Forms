@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label for="input">Dupla Avaliadora</label>
+  <ng-select [allowClear]="true"
+              [items]="items"
+              [disabled]="disabled"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              (typed)="typed($event)"
+              placeholder="Selecione o funcionário" name ="input" id="input">
+  </ng-select>
+  <div class="alert alert-danger" [hidden]="value != ''">
+    Escolha uma dupla para a avaliação.
+  </div>
+</div>

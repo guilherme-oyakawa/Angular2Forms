@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label for="input">Gestores avaliadores</label>
+  <ng-select  [multiple]="true"
+              [items]="items"
+              [disabled]="disabled"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              placeholder="Selecione os gestores" name ="input" id="input"></ng-select>
+  <div class="alert alert-danger" [hidden]="value.length > 0">
+    Avaliação deve ter ao menos um gestor.
+  </div>
+</div>
