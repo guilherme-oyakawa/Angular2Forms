@@ -35,7 +35,7 @@ export class SelectDuplaComponent{
   	}
  
   	public typed(value:any):void {
-    	console.log('New search input: ', value);
+    	//console.log('New search input: ', value);
   	}
  
   	public refreshValue(value:any):void {
