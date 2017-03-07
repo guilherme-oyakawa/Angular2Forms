@@ -6,7 +6,6 @@ import { SelectModule } from 'ng2-select';
 
 import { AppComponent } from './app.component';
 import { HeroFormComponent } from './hero-form.component';
-import { AutocompleteComponent} from './autocomplete.component';
 import { SelectMultipleComponent} from './select-multiple.component';
 import { SelectDuplaComponent} from './select-dupla.component';
 

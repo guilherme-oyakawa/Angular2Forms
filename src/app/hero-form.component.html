@@ -63,6 +63,9 @@
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0 || model.name == dupla.text">Agendar</button>
       <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Novo Agendamento</button>
     </form>
+
+    <template ngbModalContainer></template>
+
   </div>
   <div [hidden]="!submitted">
     <h2>Deseja agendar esta avaliação?</h2>

@@ -3,7 +3,6 @@ import {Hero} from './hero';
 import {Agendamento} from './agendamento';
 import {SelectMultipleComponent} from './select-multiple.component';
 import {SelectDuplaComponent} from './select-dupla.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	moduleId: module.id,
@@ -70,5 +69,4 @@ export class HeroFormComponent {
 		console.log("Avaliado", this.model.name);
 		console.log("Dupla Avaiadora", this.dupla);
 	}
-
 }
