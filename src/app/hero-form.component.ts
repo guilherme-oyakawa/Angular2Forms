@@ -3,7 +3,7 @@ import {Hero} from './hero';
 import {Agendamento} from './agendamento';
 import {SelectMultipleComponent} from './select-multiple.component';
 import {SelectDuplaComponent} from './select-dupla.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	moduleId: module.id,
@@ -51,7 +51,7 @@ export class HeroFormComponent {
 
 	}
 
-	 onSubmit(){
+	onSubmit(){
 		this.submitted = true;
 		console.log("Gestores avaliadores", this.gestores);
 	}
