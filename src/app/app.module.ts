@@ -1,3 +1,5 @@
+import { NgbdModalContent } from './modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,15 +16,20 @@ import { SelectDuplaComponent} from './select-dupla.component';
     AppComponent,
     HeroFormComponent,
     SelectMultipleComponent,
-    SelectDuplaComponent
+    SelectDuplaComponent,
+    NgbdModalContent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    SelectModule
+    SelectModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
+  entryComponents: [
+    NgbdModalContent
+  ],
+  //providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

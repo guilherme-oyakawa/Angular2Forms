@@ -1,5 +1,6 @@
 <div class="container">
-  <div [hidden]="submitted">
+  <div>
+  <!--<div [hidden]="submitted">-->
     <h1>Agendamento de Avaliação</h1>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
       <div class="form-group">
@@ -60,14 +61,13 @@
         <select-dupla (dupla) = "getDupla($event)"></select-dupla>
         <div [hidden]="model.name != dupla.text" class="alert alert-danger"> Escolha um funcionário diferente do avaliado! </div>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0 || model.name == dupla.text">Agendar</button>
+
+      <button type="submit" class="btn btn-success" (click)="open()" [disabled]="!heroForm.form.valid || !valDate || gestores.length == 0 || model.name == dupla.text">Agendar</button>
       <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Novo Agendamento</button>
     </form>
-
     <template ngbModalContainer></template>
-
   </div>
-  <div [hidden]="!submitted">
+  <!--<div [hidden]="!submitted">
     <h2>Deseja agendar esta avaliação?</h2>
     <div class="row">
       <div class="col-xs-3">Nome</div>
@@ -99,5 +99,5 @@
 
     <br>
     <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-  </div>
+  </div>-->
 </div>

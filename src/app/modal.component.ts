@@ -1,5 +1,5 @@
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ngbd-modal-content',
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
       </button>
     </div>
     <div class="modal-body">
-      <p>Hello, {{name}}!</p>
+      <p>Hello, {{dados.model.name}}!</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
@@ -19,7 +19,8 @@ import { Component, OnInit, Input } from '@angular/core';
     `
 })
 export class NgbdModalContent{
-    @Input() name;
+    @Input() dados;
 
-    constructor(public activeModal: NgbActiveModal){ }
+    constructor(public activeModal: NgbActiveModal){
+    }
 }
