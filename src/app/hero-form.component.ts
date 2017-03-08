@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Hero} from './hero';
 import {Agendamento} from './agendamento';
 import {SelectMultipleComponent} from './select-multiple.component';
 import {SelectDuplaComponent} from './select-dupla.component';
