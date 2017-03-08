@@ -2,6 +2,20 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Agendamento} from './agendamento';
 import {SelectMultipleComponent} from './select-multiple.component';
 import {SelectDuplaComponent} from './select-dupla.component';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+@Component({
+  selector: 'ngbd-modal-content',
+  templateUrl: './ngbd-modal-content.html' 
+})
+export class NgbdModalContent implements OnInit{
+  @Input() data;
+  constructor(public activeModal: NgbActiveModal) {}
+
+  ngOnInit() {
+	  console.log("Abriu Modal");
+  }
+}
 
 @Component({
 	moduleId: module.id,
@@ -20,7 +34,7 @@ export class HeroFormComponent implements OnInit{
 
 	dupla = '';
 
-	constructor(){
+	constructor(private modalService: NgbModal){
 		this.today = Date.now();
 		console.log("Avaliado", this.model.name);
 		console.log("Dupla Avaiadora", this.dupla);
@@ -53,7 +67,6 @@ export class HeroFormComponent implements OnInit{
 
 	onSubmit(){
 		this.submitted = true;
-		//console.log("Abrir modal...");
 	}
 
 	newHero() {
@@ -69,6 +82,12 @@ export class HeroFormComponent implements OnInit{
 		this.dupla = value;
 		// console.log("Avaliado", this.model.name);
 		// console.log("Dupla Avaiadora", this.dupla);
+	}
+
+	open(){
+		console.log("Abrindo modal...");
+		const modalRef = this.modalService.open(NgbdModalContent);
+		modalRef.componentInstance.data = "";
 	}
 
 }

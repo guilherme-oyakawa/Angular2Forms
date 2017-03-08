@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { SelectModule } from 'ng2-select';
 
 import { AppComponent } from './app.component';
-import { HeroFormComponent } from './hero-form.component';
+import { HeroFormComponent, NgbdModalContent} from './hero-form.component';
 import { SelectMultipleComponent} from './select-multiple.component';
 import { SelectDuplaComponent} from './select-dupla.component';
 
@@ -14,6 +14,7 @@ import { SelectDuplaComponent} from './select-dupla.component';
   declarations: [
     AppComponent,
     HeroFormComponent,
+    NgbdModalContent,
     SelectMultipleComponent,
     SelectDuplaComponent,
 
@@ -26,8 +27,9 @@ import { SelectDuplaComponent} from './select-dupla.component';
     NgbModule.forRoot()
   ],
   entryComponents: [
+    NgbdModalContent
   ],
-  //providers: [],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

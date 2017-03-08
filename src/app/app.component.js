@@ -16,7 +16,7 @@ export var AppComponent = (function () {
         Component({
             selector: 'app-root',
             //templateUrl: './app.component.html',
-            template: '<hero-form></hero-form>',
+            template: "<hero-form></hero-form>",
             styleUrls: ['./app.component.css']
         }), 
         __metadata('design:paramtypes', [])

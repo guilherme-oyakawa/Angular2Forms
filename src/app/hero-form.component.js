@@ -7,10 +7,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Agendamento } from './agendamento';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+export var NgbdModalContent = (function () {
+    function NgbdModalContent(activeModal) {
+        this.activeModal = activeModal;
+    }
+    __decorate([
+        Input(), 
+        __metadata('design:type', Object)
+    ], NgbdModalContent.prototype, "data", void 0);
+    NgbdModalContent = __decorate([
+        Component({
+            selector: 'ngbd-modal-content',
+            template: "\n    <div class=\"modal-header\">\n      <h4 class=\"modal-title\">Hi there!</h4>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"activeModal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <div class=\"modal-body\">\n      <p>Hello!</p>\n    </div>\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"activeModal.close('Close click')\">Close</button>\n    </div>\n  "
+        }), 
+        __metadata('design:paramtypes', [NgbActiveModal])
+    ], NgbdModalContent);
+    return NgbdModalContent;
+}());
 export var HeroFormComponent = (function () {
-    function HeroFormComponent() {
+    function HeroFormComponent(modalService) {
+        this.modalService = modalService;
         this.gestores = [];
         this.dupla = '';
         this.locais = ['Reuniões Grande', 'Reuniões Média', 'Reuniões Pequena'];
@@ -22,6 +41,9 @@ export var HeroFormComponent = (function () {
         console.log("Avaliado", this.model.name);
         console.log("Dupla Avaiadora", this.dupla);
     }
+    HeroFormComponent.prototype.ngOnInit = function () {
+        //this.open();
+    };
     HeroFormComponent.prototype.checkDate = function () {
         this.today = Date.now();
         this.DataAgendamento = new Date(this.agendamento).getTime();
@@ -34,19 +56,23 @@ export var HeroFormComponent = (function () {
     };
     HeroFormComponent.prototype.onSubmit = function () {
         this.submitted = true;
-        console.log("Gestores avaliadores", this.gestores);
     };
     HeroFormComponent.prototype.newHero = function () {
         this.model = new Agendamento(42, '', '', '', '');
     };
     HeroFormComponent.prototype.getList = function (value) {
         this.gestores = value;
-        console.log("Gestores", this.gestores);
+        //console.log("Gestores", this.gestores);
     };
     HeroFormComponent.prototype.getDupla = function (value) {
         this.dupla = value;
-        console.log("Avaliado", this.model.name);
-        console.log("Dupla Avaiadora", this.dupla);
+        // console.log("Avaliado", this.model.name);
+        // console.log("Dupla Avaiadora", this.dupla);
+    };
+    HeroFormComponent.prototype.open = function () {
+        console.log("Abrindo modal...");
+        var modalRef = this.modalService.open(NgbdModalContent);
+        modalRef.componentInstance.data = "";
     };
     HeroFormComponent = __decorate([
         Component({
@@ -55,7 +81,7 @@ export var HeroFormComponent = (function () {
             styleUrls: ['./hero-form.component.css'],
             templateUrl: './hero-form.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [NgbModal])
     ], HeroFormComponent);
     return HeroFormComponent;
 }());

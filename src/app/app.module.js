@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SelectModule } from 'ng2-select';
 import { AppComponent } from './app.component';
-import { HeroFormComponent } from './hero-form.component';
+import { HeroFormComponent, NgbdModalContent } from './hero-form.component';
 import { SelectMultipleComponent } from './select-multiple.component';
 import { SelectDuplaComponent } from './select-dupla.component';
 export var AppModule = (function () {
@@ -24,14 +25,19 @@ export var AppModule = (function () {
             declarations: [
                 AppComponent,
                 HeroFormComponent,
+                NgbdModalContent,
                 SelectMultipleComponent,
-                SelectDuplaComponent
+                SelectDuplaComponent,
             ],
             imports: [
                 BrowserModule,
                 FormsModule,
                 HttpModule,
-                SelectModule
+                SelectModule,
+                NgbModule.forRoot()
+            ],
+            entryComponents: [
+                NgbdModalContent
             ],
             providers: [],
             bootstrap: [AppComponent]
