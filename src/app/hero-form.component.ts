@@ -1,6 +1,4 @@
-import { NgbdModalContent } from './modal.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Hero} from './hero';
 import {Agendamento} from './agendamento';
 import {SelectMultipleComponent} from './select-multiple.component';
@@ -15,7 +13,7 @@ import {SelectDuplaComponent} from './select-dupla.component';
 
 export class HeroFormComponent implements OnInit{
 	ngOnInit(){
-		this.open();
+		//this.open();
 	}
 	today;
 
@@ -23,7 +21,7 @@ export class HeroFormComponent implements OnInit{
 
 	dupla = '';
 
-	constructor(private modalService: NgbModal){
+	constructor(){
 		this.today = Date.now();
 		console.log("Avaliado", this.model.name);
 		console.log("Dupla Avaiadora", this.dupla);
@@ -56,7 +54,7 @@ export class HeroFormComponent implements OnInit{
 
 	onSubmit(){
 		this.submitted = true;
-		//console.log("Gestores avaliadores", this.gestores);
+		//console.log("Abrir modal...");
 	}
 
 	newHero() {
@@ -72,16 +70,6 @@ export class HeroFormComponent implements OnInit{
 		this.dupla = value;
 		// console.log("Avaliado", this.model.name);
 		// console.log("Dupla Avaiadora", this.dupla);
-	}
-	open(){
-		console.log("Abrindo modal?")
-		var dados = {
-			model: this.model,
-			gestores: this.gestores,
-			dupla: this.dupla
-		};
-		const modalRef = this.modalService.open(NgbdModalContent);
-		modalRef.componentInstance.dados = dados;
 	}
 
 }
